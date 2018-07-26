@@ -2,6 +2,7 @@ package MahJong_Bingo;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,14 +20,16 @@ public class Control_Framework extends JFrame {
 		setTitle("Mahjong Bingo!");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(300, 50, 800, 600);
+		setBounds(0, 0, 1200, 700);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		start_Page.setLocation(0, 0);
 		start_Page.setBorder(new EmptyBorder(5, 5, 5, 5));
 		start_Page.setLayout(null);
 		getContentPane().add(start_Page);
 		getContentPane().add(drawing_Page);
 		getContentPane().add(gaming_Page);
-		switchPage(1);
+		switchPage(1);	
 	}
 	
 	// control the showing page
@@ -52,15 +55,7 @@ public class Control_Framework extends JFrame {
 	
 	// main function to run the program
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Control_Framework main_frame = new Control_Framework();
-					main_frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		Control_Framework main_frame = new Control_Framework();
+		main_frame.setVisible(true);
 	}
 }
