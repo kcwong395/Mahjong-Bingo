@@ -27,6 +27,7 @@ public class drawing_page extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1200, 700);
 		
+		// After drawing 15 tiles, this button will appear and bring user to gaming page
 		gameBegin = new JButton("Start");
 		gameBegin.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
@@ -35,17 +36,8 @@ public class drawing_page extends JPanel {
 		});
 		gameBegin.setBounds(525, 315, 150, 70);
 		
-		drawing_tile(); // new mahjong tiles for drawing
-		
-		// set up background
-		JLabel background_label = new JLabel("");
-		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
-		background_label.setIcon(new ImageIcon(background));
-		background_label.setBounds(0, 0, 1200, 700);
-		add(background_label);
-		
 		ArrayList<Integer> mjtable = new ArrayList();
-		for(int i=0;i<36;i++){  // to add tiles to the arraylist
+		for(int i=0;i<36;i++){  // to add tiles to the arraylist (in a style of 1:id, 2:id ... and so on
 			mjtable.add(i);
 		}
 		
@@ -57,6 +49,16 @@ public class drawing_page extends JPanel {
 			mjtable.remove(id);	// remove the used id
 			count++;
 		}
+		
+		// new mahjong tiles for drawing
+		drawing_tile(); 
+		
+		// set up background
+		JLabel background_label = new JLabel("");
+		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
+		background_label.setIcon(new ImageIcon(background));
+		background_label.setBounds(0, 0, 1200, 700);
+		add(background_label);
 	}
 	
 	// assigning tiles location & importing pic
@@ -69,11 +71,13 @@ public class drawing_page extends JPanel {
 				System.out.println();
 				tile[row][col].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						tile[rowF][colF].setVisible(false);
-						drawedCount++;
-						tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
-						System.out.println(tile[rowF][colF].GetId());
-						if(drawedCount == 15) {
+						if(drawedCount < 15) {
+							tile[rowF][colF].setVisible(false);
+							drawedCount++;
+							tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+							System.out.println(tile[rowF][colF].GetId());
+							
+						} else {
 							add(gameBegin);
 						}
 					}

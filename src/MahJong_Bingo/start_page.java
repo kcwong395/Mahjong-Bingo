@@ -27,7 +27,7 @@ public class start_page extends JPanel {
 				Control_Framework.switchPage(2);
 			}
 		});
-		btnNewGame.setBounds(525, 200, 150, 70);
+		btnNewGame.setBounds(525, 350, 150, 70);
 		add(btnNewGame);
 		
 		// set up button for explaining game rules
@@ -50,8 +50,21 @@ public class start_page extends JPanel {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnGameRules.setBounds(525, 425, 150, 70);
+		btnGameRules.setBounds(525, 450, 150, 70);
 		add(btnGameRules);
+		
+		// set up button which contains developers' info
+		JButton btnDeveloperInfo = new JButton("Developers' Info");
+		String info = "This little program is developed by Kevin Kwong, Martin Wong and Ken Teng for the NCKU exchange project.\n"
+				+ "Acknowlegdement:\n"
+				+ "Our team would like to thank Martin Persson for publicing these mahjong icons.";
+		btnDeveloperInfo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) {
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, info, "Developers' Information",JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		btnDeveloperInfo.setBounds(525, 550, 150, 70);
+		add(btnDeveloperInfo);
 		
 		// set up background
 		JLabel background_label = new JLabel("");
