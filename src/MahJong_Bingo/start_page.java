@@ -18,7 +18,7 @@ public class start_page extends JPanel {
 	public start_page() {
 		setVisible(false);
 		setLayout(null);
-		setBounds(300, 50, 800, 600);
+		setBounds(0, 0, 1200, 700);
 		
 		// set up button for starting a new game
 		JButton btnNewGame = new JButton("New Game");
@@ -27,7 +27,7 @@ public class start_page extends JPanel {
 				Control_Framework.switchPage(2);
 			}
 		});
-		btnNewGame.setBounds(325, 175, 150, 50);
+		btnNewGame.setBounds(525, 200, 150, 70);
 		add(btnNewGame);
 		
 		// set up button for explaining game rules
@@ -47,17 +47,17 @@ public class start_page extends JPanel {
 				"5）如未達成勝利條件，但有任意五張相連的牌，則獲得額外的三張牌並繼續遊戲";
 		btnGameRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-				JOptionPane.showMessageDialog(btnGameRules, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnGameRules.setBounds(325, 375, 150, 50);
+		btnGameRules.setBounds(525, 425, 150, 70);
 		add(btnGameRules);
 		
 		// set up background
 		JLabel background_label = new JLabel("");
 		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
 		background_label.setIcon(new ImageIcon(background));
-		background_label.setBounds(0, 0, 800, 600);
+		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label);
 	}
 }
