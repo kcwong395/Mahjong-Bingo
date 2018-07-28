@@ -27,7 +27,11 @@ public class start_page extends JPanel {
 				Control_Framework.switchPage(2);
 			}
 		});
+<<<<<<< HEAD
 		btnNewGame.setBounds(525, 350, 150, 70);
+=======
+		btnNewGame.setBounds(525, 200, 150, 70);
+>>>>>>> f2f726b0de3afc8c6f651558c10816aa1921c851
 		add(btnNewGame);
 		
 		// set up button for explaining game rules
@@ -50,7 +54,11 @@ public class start_page extends JPanel {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
+<<<<<<< HEAD
 		btnGameRules.setBounds(525, 450, 150, 70);
+=======
+		btnGameRules.setBounds(525, 425, 150, 70);
+>>>>>>> f2f726b0de3afc8c6f651558c10816aa1921c851
 		add(btnGameRules);
 		
 		// set up button which contains developers' info
