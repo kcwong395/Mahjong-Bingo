@@ -44,6 +44,7 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(true);
 				gaming_Page.setVisible(false);
+				
 				break;
 			case(3):
 				start_Page.setVisible(false);

@@ -19,7 +19,7 @@ public class drawing_page extends JPanel {
 
 	private int drawedCount = 0;
 	JButton gameBegin;
-	MJ_Card tile[][] = new MJ_Card[6][6];
+	static MJ_Card tile[][] = new MJ_Card[6][6];
 	int[] mjnum = new int[36];	// array to store id of tile
 	
 	public drawing_page() {
@@ -63,6 +63,7 @@ public class drawing_page extends JPanel {
 	
 	// assigning tiles location & importing pic
 	public void drawing_tile() {
+		
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 6; col++) {
 				final int rowF = row;
@@ -72,18 +73,27 @@ public class drawing_page extends JPanel {
 				tile[row][col].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						if(drawedCount < 15) {
-							tile[rowF][colF].setVisible(false);
+							//tile[rowF][colF].setVisible(false);
+							tile[rowF][colF].SetLoc((drawedCount)*50, 570);
+							tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 							drawedCount++;
 							tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
 							System.out.println(tile[rowF][colF].GetId());
 							
+							
 						} else {
 							add(gameBegin);
+							//setComponentZOrder(gameBegin, 0);
+							gameBegin.setVisible(true);
 						}
 					}
 				});
 				add(tile[row][col]);
 			}	
 		}
+	}
+	
+	public static MJ_Card[][] GetMJ(){
+		return tile;
 	}
 }

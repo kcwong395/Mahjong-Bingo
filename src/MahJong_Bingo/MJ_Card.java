@@ -35,6 +35,14 @@ public class MJ_Card extends JButton{
 		setBounds(450 + 50 * col, 125 + 75 * row, 50, 75);
 	}
 	
+	public int GetCol(){
+		return this.col;
+	}
+	
+	public int GetRow(){
+		return this.row;
+	}
+	
 	public void ToString(){
 		System.out.printf("This is %d, x = %d, and y = %d\n", mj_id, 450 + 50 * col, 125 + 75 * row);
 	}
