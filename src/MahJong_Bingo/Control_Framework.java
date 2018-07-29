@@ -2,6 +2,7 @@ package MahJong_Bingo;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -50,6 +51,7 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(true);
+				gaming_Page.putMJ();
 				break;
 		}
 	}
@@ -59,4 +61,6 @@ public class Control_Framework extends JFrame {
 		Control_Framework main_frame = new Control_Framework();
 		main_frame.setVisible(true);
 	}
+	
+
 }

@@ -75,11 +75,12 @@ public class drawing_page extends JLayeredPane {
 					public void actionPerformed(ActionEvent evt) {
 						if(drawedCount < 15) {
 							//tile[rowF][colF].setVisible(false);
-							tile[rowF][colF].SetLoc((drawedCount)*50, 580);
+							tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
 							tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 							drawedCount++;
 							tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
 							System.out.println(tile[rowF][colF].GetId());
+							tile[rowF][colF].Select();
 							
 							
 						} else {
