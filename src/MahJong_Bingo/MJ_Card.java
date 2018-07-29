@@ -32,8 +32,7 @@ public class MJ_Card extends JButton{
 	public void SetLoc(int col,int row){
 		this.col = col;
 		this.row = row;
-		setBounds(450 + 50 * col, 125 + 75 * row, 50, 75);
-<<<<<<< HEAD
+		setBounds(450 + 50 * col, 75 + 75 * row, 50, 75);
 	}
 	
 	public int GetCol(){
@@ -42,8 +41,6 @@ public class MJ_Card extends JButton{
 	
 	public int GetRow(){
 		return this.row;
-=======
->>>>>>> f2f726b0de3afc8c6f651558c10816aa1921c851
 	}
 	
 	public void ToString(){

@@ -27,12 +27,8 @@ public class start_page extends JPanel {
 				Control_Framework.switchPage(2);
 			}
 		});
-<<<<<<< HEAD
+
 		btnNewGame.setBounds(525, 350, 150, 70);
-=======
-		btnNewGame.setBounds(525, 200, 150, 70);
->>>>>>> f2f726b0de3afc8c6f651558c10816aa1921c851
-		add(btnNewGame);
 		
 		// set up button for explaining game rules
 		JButton btnGameRules = new JButton("Game Rules");
@@ -43,23 +39,18 @@ public class start_page extends JPanel {
 				"4) If any six of the tiles complete a line, you win.\r\n" + 
 				"5) Get extra 3 tiles and continue the game if there are five tiles connected while no line is completed. \r\n" + 
 				"\r\n" + 
-				"遊戲規則：\r\n" + 
-				"1）抽出十五張麻將牌\r\n" + 
-				"2）點擊麻將以翻開牌面\r\n" + 
-				"3）拖拉麻將至對應圖案\r\n" + 
-				"4）如有六張麻將組成一條線（直橫斜皆可），則視作勝利\r\n" + 
-				"5）如未達成勝利條件，但有任意五張相連的牌，則獲得額外的三張牌並繼續遊戲";
+				"绲款暩锟斤拷飪冦劑\r\n" + 
+				"1銊樺柌鍫ゅ潒鎷伙拷飴ｏ拷飽烽姜\r\n" + 
+				"2銊橆厺顨撮帄飽风湑妤瑰侗榻啽\r\n" + 
+				"3銊樿繊宥洪帄飽风カ飽活敯飳囧伓\r\n" + 
+				"4銊橈牨琛勯灎锟斤崳锟斤柗鐬庡倴鐝锟姐剹鐪活瑷囪珎瑜剺銊涳儍锟筋煈锟斤剢鐬砛r\n" + 
+				"5銊橈牨甯ょ祷鍌栵剢鐬愁鐠冦剾绛嶈餇樼牘鎷伙拷飴伴爫B鑵旈姜銊涳儍闄傝厱璎炰繈鑵旓锟斤崷锟筋粌椁為处绲款暩";
 		btnGameRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-<<<<<<< HEAD
 		btnGameRules.setBounds(525, 450, 150, 70);
-=======
-		btnGameRules.setBounds(525, 425, 150, 70);
->>>>>>> f2f726b0de3afc8c6f651558c10816aa1921c851
-		add(btnGameRules);
 		
 		// set up button which contains developers' info
 		JButton btnDeveloperInfo = new JButton("Developers' Info");
@@ -72,6 +63,8 @@ public class start_page extends JPanel {
 			}
 		});
 		btnDeveloperInfo.setBounds(525, 550, 150, 70);
+		add(btnNewGame);
+		add(btnGameRules);
 		add(btnDeveloperInfo);
 		
 		// set up background
