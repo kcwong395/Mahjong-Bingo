@@ -83,11 +83,13 @@ public class MJ_Card extends JButton{
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 			System.out.printf("This is %d\n",mj_id);
-			stage = !stage;
+			stage = !stage; //toggle the stage
 			if(stage){
 				ChangeFront();
+				gaming_page.SetClickMJ(true);
 			}else{
 				ChangeBack();
+				gaming_page.SetClickMJ(false);
 			}
 			gaming_page.BlockAllButSelect(mj_id);
 		}

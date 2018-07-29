@@ -2,6 +2,7 @@ package MahJong_Bingo;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -11,9 +12,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class gaming_page extends JPanel {
-
+	ChessColumn[][] mj_col;
 	MJ_Card[][] cardmap;
 	static ArrayList<MJ_Card> Cur_MJ;
+	public static boolean ClickMJ = false;
+	static int select_value;
 	public gaming_page() {
 		Cur_MJ = new ArrayList<MJ_Card>();
 		setVisible(false);
@@ -33,7 +36,26 @@ public class gaming_page extends JPanel {
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label,1,0);
-		
+		//JLabel testlabel = new JLabel(String.valueOf(1));
+		//testlabel.setBounds(50,200,100,100);
+		//testlabel.setOpaque(true);
+		//testlabel.setBackground(Color.red);
+		//add(testlabel,2,0);
+		mj_col = new ChessColumn[6][6];
+		for(int i=0;i<6;i++){
+			for(int j=0;j<6;j++){
+				int chessid = ((i*5)+j)%2;
+				Color cur_color;
+				if(chessid==1){
+					cur_color = Color.WHITE;
+				}else{
+					cur_color = Color.BLACK;
+				}
+				mj_col[i][j] = new ChessColumn(((i*6)+j),cur_color);
+				mj_col[i][j].setLocation((j*100)+250, i*100);
+				add(mj_col[i][j],2,0);
+			}
+		}
 	}
 	public void putMJ(){
 		cardmap = drawing_page.GetMJ();
@@ -42,7 +64,7 @@ public class gaming_page extends JPanel {
 				final int row = i;
 				final int col = i;
 				if(cardmap[i][j].Selected()){
-				add(cardmap[i][j],2,0);
+				add(cardmap[i][j],3,0);
 				cardmap[i][j].setLocation(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
 				cardmap[i][j].setVisible(true);
 				/*
@@ -63,7 +85,22 @@ public class gaming_page extends JPanel {
 		}
 		
 	}
+	
+	public static int FindIndex(int id){
+		for(int i=0;i<Cur_MJ.size();i++){
+			if(Cur_MJ.get(i).GetId()==id)return i;
+		}
+		return 0;
+	}
+	
+	public static void PutOnChessCol(int index,Point loc){
+		int idx = FindIndex(index);
+		Cur_MJ.get(idx).setLocation(loc);
+		Cur_MJ.remove(idx);
+	}
+	
 	public static void BlockAllButSelect(int select){
+		select_value = select;
 		for(int i=0;i<Cur_MJ.size();i++){
 			if(Cur_MJ.get(i).GetId()!=select){
 				Cur_MJ.get(i).SetStage(false);
@@ -71,4 +108,8 @@ public class gaming_page extends JPanel {
 			}
 		}
 	}
+	public static void SetClickMJ(boolean bool){
+		ClickMJ = bool;
+	}
+	
 }
