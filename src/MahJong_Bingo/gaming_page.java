@@ -23,6 +23,7 @@ public class gaming_page extends JPanel {
 	private static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
 	public gaming_page() {
+		WinGame = false;
 		Cur_MJ = new ArrayList<MJ_Card>();
 		setVisible(false);
 		setLayout(null);
@@ -115,6 +116,8 @@ public class gaming_page extends JPanel {
 			JOptionPane.showMessageDialog(Control_Framework.start_Page, "You Score Is 10000", "You Win",JOptionPane.INFORMATION_MESSAGE);
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
+			hasbeenListen = false;
+			CardListen = false;
 		}else{
 			if(CardListen && !hasbeenListen){
 				drawing_page.ListenCard();
@@ -124,6 +127,8 @@ public class gaming_page extends JPanel {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, "Oops, Maybe next time you will win", "GameOver",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
 				Control_Framework.main_frame.switchPage(1);
+				hasbeenListen = false;
+				CardListen = false;
 			}
 		}
 	}
@@ -174,6 +179,7 @@ public class gaming_page extends JPanel {
 						System.out.println("You can Listen the Card");
 						JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enther the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
 						CardListen = true;
+						
 					}
 				}
 			}

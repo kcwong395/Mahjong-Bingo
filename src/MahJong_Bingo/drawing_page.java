@@ -28,7 +28,7 @@ public class drawing_page extends JLayeredPane {
 		setVisible(false);
 		setLayout(null);
 		setBounds(0, 0, 1200, 700);
-		
+		listCardSection = false;
 		// After drawing 15 tiles, this button will appear and bring user to gaming page
 		gameBegin = new JButton("Start");
 		gameBegin.addActionListener(new ActionListener() {
@@ -44,12 +44,18 @@ public class drawing_page extends JLayeredPane {
 		}
 		
 		// this part is to assign a random id (without repeated) to each tile
+		/*
 		int count = 0;
 		while(mjtable.size()>0){
 			int id =(int) (mjtable.size()*Math.random());
 			mjnum[count]=mjtable.get(id);	// assign a random number to every tile as their id
 			mjtable.remove(id);	// remove the used id
 			count++;
+		}
+		*/
+		
+		for(int i=0;i<mjnum.length;i++){
+			mjnum[i] = i;
 		}
 		
 		// new mahjong tiles for drawing
