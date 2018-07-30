@@ -23,6 +23,7 @@ public class drawing_page extends JLayeredPane {
 	static MJ_Card tile[][] = new MJ_Card[6][6];
 	int[] mjnum = new int[36];	// array to store id of tile
 	
+	
 	public drawing_page() {
 		setVisible(false);
 		setLayout(null);

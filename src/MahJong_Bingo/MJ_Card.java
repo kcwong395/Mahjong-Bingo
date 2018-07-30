@@ -73,6 +73,10 @@ public class MJ_Card extends JButton{
 		addActionListener(listener);
 	}
 	
+	public void rmlistener(){
+		this.removeActionListener(listener);
+	}
+	
 	public void SetStage(boolean s){
 		stage = s;
 	}

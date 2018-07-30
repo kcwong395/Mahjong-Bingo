@@ -15,7 +15,7 @@ public class Control_Framework extends JFrame {
 	static start_page start_Page = new start_page();
 	static drawing_page drawing_Page = new drawing_page();
 	static gaming_page gaming_Page = new gaming_page();
-	
+	public static Control_Framework main_frame;
 	// framework initialization
 	public Control_Framework() {
 		setTitle("Mahjong Bingo!");
@@ -56,9 +56,30 @@ public class Control_Framework extends JFrame {
 		}
 	}
 	
+	public void reStart(){
+		RenewPanel();
+		switchPage(1);
+	}
+	
+	public void RenewPanel(){
+		remove(start_Page);
+		remove(drawing_Page);
+		remove(gaming_Page);
+		start_Page = new start_page();
+		drawing_Page = new drawing_page();
+		gaming_Page = new gaming_page();
+		start_Page.setLocation(0, 0);
+		start_Page.setBorder(new EmptyBorder(5, 5, 5, 5));
+		start_Page.setLayout(null);
+		getContentPane().add(start_Page);
+		getContentPane().add(drawing_Page);
+		getContentPane().add(gaming_Page);
+		
+	}
+	
 	// main function to run the program
 	public static void main(String[] args) {
-		Control_Framework main_frame = new Control_Framework();
+		main_frame = new Control_Framework();
 		main_frame.setVisible(true);
 	}
 	
