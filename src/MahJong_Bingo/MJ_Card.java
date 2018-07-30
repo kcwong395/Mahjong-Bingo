@@ -61,6 +61,9 @@ public class MJ_Card extends JButton{
 		flag = true;
 	}
 	
+	public void DelSelect(){
+		flag = false;
+	}
 	public int GetRow(){
 		return this.row;
 	}

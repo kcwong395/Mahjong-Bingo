@@ -20,6 +20,7 @@ public class gaming_page extends JPanel {
 	static int select_value;
 	private static boolean CardListen = false;
 	private static boolean WinGame = false;
+	private static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
 	public gaming_page() {
 		Cur_MJ = new ArrayList<MJ_Card>();
@@ -100,6 +101,7 @@ public class gaming_page extends JPanel {
 		int idx = FindIndex(index);
 		Cur_MJ.get(idx).setLocation(loc);
 		Cur_MJ.get(idx).rmlistener();
+		Cur_MJ.get(idx).DelSelect();
 		Cur_MJ.remove(idx);
 		CheckMap();
 		SetClickMJ(false);
@@ -114,8 +116,10 @@ public class gaming_page extends JPanel {
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
 		}else{
-			if(CardListen){
+			if(CardListen && !hasbeenListen){
+				drawing_page.ListenCard();
 				Control_Framework.main_frame.switchPage(2);
+				hasbeenListen = true;
 			}else{
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, "Oops, Maybe next time you will win", "GameOver",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
@@ -159,14 +163,18 @@ public class gaming_page extends JPanel {
 			}
 			System.out.printf("Row %d:\t%d\tCol %d:\t%d\n",i,col,i,row);
 			if(col>5 || row>5){
-				System.out.println("You Win");
-				JOptionPane.showMessageDialog(Control_Framework.start_Page, "You did it!!!", "You Win",JOptionPane.INFORMATION_MESSAGE);
-				WinGame = true;
+				if(!WinGame){
+					System.out.println("You Win");
+					JOptionPane.showMessageDialog(Control_Framework.start_Page, "You did it!!!", "You Win",JOptionPane.INFORMATION_MESSAGE);
+					WinGame = true;
+				}
 			}else{
 				if(col==5 || row==5){
-					System.out.println("You can Listen the Card");
-					JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enther the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
-					CardListen = true;
+					if(!CardListen){
+						System.out.println("You can Listen the Card");
+						JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enther the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
+						CardListen = true;
+					}
 				}
 			}
 			col = 0;

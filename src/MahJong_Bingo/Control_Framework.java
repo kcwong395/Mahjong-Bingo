@@ -15,6 +15,7 @@ public class Control_Framework extends JFrame {
 	static start_page start_Page = new start_page();
 	static drawing_page drawing_Page = new drawing_page();
 	static gaming_page gaming_Page = new gaming_page();
+	public static boolean callfromlisten = false;
 	public static Control_Framework main_frame;
 	// framework initialization
 	public Control_Framework() {
@@ -51,7 +52,11 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(true);
-				gaming_Page.putMJ();
+				//if(callfromlisten){
+				//	System.out.println("Do Nothing,Just change");
+				//}else{
+					gaming_Page.putMJ();
+				//}
 				break;
 		}
 	}

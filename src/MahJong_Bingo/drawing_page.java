@@ -19,11 +19,11 @@ import java.awt.event.ActionEvent;
 public class drawing_page extends JLayeredPane {
 
 	private int drawedCount = 0;
-	JButton gameBegin;
+	static JButton gameBegin;
 	static MJ_Card tile[][] = new MJ_Card[6][6];
 	int[] mjnum = new int[36];	// array to store id of tile
-	
-	
+	public static boolean listCardSection = false;
+	int canlist = 0;
 	public drawing_page() {
 		setVisible(false);
 		setLayout(null);
@@ -85,6 +85,23 @@ public class drawing_page extends JLayeredPane {
 								tile[rowF][colF].Select();
 								if(drawedCount==15)add(gameBegin,3,0);	
 							}
+						}else{
+							if(listCardSection){
+								
+								if(canlist < 3){
+									if(!tile[rowF][colF].Selected()){
+										//tile[rowF][colF].setVisible(false);
+										tile[rowF][colF].SetLoc(((canlist)*50)+200, 580);
+										tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
+										canlist++;
+										tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+										System.out.println(tile[rowF][colF].GetId());
+										tile[rowF][colF].Select();
+										if(canlist==3)gameBegin.setVisible(true);
+									
+								}
+							}
+						}
 						}
 					}
 				});
@@ -94,7 +111,10 @@ public class drawing_page extends JLayeredPane {
 		}
 	}
 	
-	
+	public static void ListenCard(){
+		listCardSection = true;
+		gameBegin.setVisible(false);
+	}
 	
 	public static MJ_Card[][] GetMJ(){
 		return tile;
