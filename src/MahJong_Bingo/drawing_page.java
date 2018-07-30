@@ -75,19 +75,16 @@ public class drawing_page extends JLayeredPane {
 				tile[row][col].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						if(drawedCount < 15) {
-							//tile[rowF][colF].setVisible(false);
-							tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
-							tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
-							drawedCount++;
-							tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
-							System.out.println(tile[rowF][colF].GetId());
-							tile[rowF][colF].Select();
-							
-							
-						} else {
-							add(gameBegin,3,0);
-							//setComponentZOrder(gameBegin, 0);
-							gameBegin.setVisible(true);
+							if(!tile[rowF][colF].Selected()){
+								//tile[rowF][colF].setVisible(false);
+								tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
+								tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
+								drawedCount++;
+								tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+								System.out.println(tile[rowF][colF].GetId());
+								tile[rowF][colF].Select();
+								if(drawedCount==15)add(gameBegin,3,0);	
+							}
 						}
 					}
 				});
@@ -96,6 +93,8 @@ public class drawing_page extends JLayeredPane {
 			}	
 		}
 	}
+	
+	
 	
 	public static MJ_Card[][] GetMJ(){
 		return tile;
