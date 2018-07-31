@@ -44,7 +44,7 @@ public class drawing_page extends JLayeredPane {
 		}
 		
 		// this part is to assign a random id (without repeated) to each tile
-		/*
+		
 		int count = 0;
 		while(mjtable.size()>0){
 			int id =(int) (mjtable.size()*Math.random());
@@ -52,12 +52,14 @@ public class drawing_page extends JLayeredPane {
 			mjtable.remove(id);	// remove the used id
 			count++;
 		}
-		*/
 		
+		
+		//for testing
+		/*
 		for(int i=0;i<mjnum.length;i++){
 			mjnum[i] = i;
 		}
-		
+		*/
 		// new mahjong tiles for drawing
 		
 		drawing_tile(); // new mahjong tiles for drawing

@@ -5,25 +5,29 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class gaming_page extends JPanel {
+public class gaming_page extends JPanel implements MouseMotionListener{
 	static ChessColumn[][] mj_col;
 	MJ_Card[][] cardmap;
 	static ArrayList<MJ_Card> Cur_MJ;
 	public static boolean ClickMJ = false;
 	static int select_value;
+	static MJ_Card selectMJ;
 	private static boolean CardListen = false;
 	private static boolean WinGame = false;
 	private static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
 	public gaming_page() {
-		WinGame = false;
+		
 		Cur_MJ = new ArrayList<MJ_Card>();
 		setVisible(false);
 		setLayout(null);
@@ -46,6 +50,11 @@ public class gaming_page extends JPanel {
 		//testlabel.setOpaque(true);
 		//testlabel.setBackground(Color.red);
 		//add(testlabel,2,0);
+		JLabel chessTable = new JLabel();
+		Image chessTableImg = new ImageIcon(this.getClass().getResource("/gameTable.png")).getImage();
+		chessTable.setIcon(new ImageIcon(chessTableImg));
+		chessTable.setBounds(250, -30, 600, 600);
+		add(chessTable,1,0);
 		mj_col = new ChessColumn[6][6];
 		for(int i=0;i<6;i++){
 			for(int j=0;j<6;j++){
@@ -57,10 +66,11 @@ public class gaming_page extends JPanel {
 					cur_color = Color.BLACK;
 				}
 				mj_col[i][j] = new ChessColumn(((i*6)+j),cur_color);
-				mj_col[i][j].setLocation((j*100)+250, i*100);
+				mj_col[i][j].setLocation((j*90)+250, i*90);
 				add(mj_col[i][j],2,0);
 			}
 		}
+		this.addMouseMotionListener(this);
 	}
 	public void putMJ(){
 		cardmap = drawing_page.GetMJ();
@@ -72,6 +82,7 @@ public class gaming_page extends JPanel {
 				add(cardmap[i][j],3,0);
 				cardmap[i][j].setLocation(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
 				cardmap[i][j].setVisible(true);
+				cardmap[i][j].setOrg(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
 				/*
 				cardmap[i][j].addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent evt) {
@@ -139,6 +150,9 @@ public class gaming_page extends JPanel {
 			if(Cur_MJ.get(i).GetId()!=select){
 				Cur_MJ.get(i).SetStage(false);
 				Cur_MJ.get(i).ChangeBack();
+				Cur_MJ.get(i).backOrg();
+			}else{
+				selectMJ =Cur_MJ.get(i);
 			}
 		}
 	}
@@ -191,5 +205,16 @@ public class gaming_page extends JPanel {
 	public static void SetClickMJ(boolean bool){
 		ClickMJ = bool;
 	}
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		if(this.ClickMJ)this.selectMJ.setLocation(arg0.getX()+5, arg0.getY()+5);
+	}
+
 	
 }

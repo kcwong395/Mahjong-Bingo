@@ -3,14 +3,16 @@ package MahJong_Bingo;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
-public class MJ_Card extends JButton{
+public class MJ_Card extends JButton implements MouseMotionListener{
 
-	private int mj_id, col, row;
+	private int mj_id, col, row,org_x,org_y;
 	private Image backview,frontview;
 	private boolean flag = false;
 	private boolean stage = false;
@@ -24,7 +26,7 @@ public class MJ_Card extends JButton{
 		setContentAreaFilled(false);
 		setBorderPainted(false);
 		SetLoc(col, row);
-		
+		this.addMouseMotionListener(this);
 	}
 	
 	public void ChangeFront(){
@@ -47,6 +49,15 @@ public class MJ_Card extends JButton{
 		this.col = col;
 		this.row = row;
 		setBounds(450 + 50 * col, 75 + 75 * row, 50, 75);
+	}
+	
+	public void setOrg(int orgx,int orgy){
+		this.org_x = orgx;
+		this.org_y = orgy;
+	}
+	
+	public void backOrg(){
+		this.setLocation(this.org_x, this.org_y);
 	}
 	
 	public int GetCol(){
@@ -101,4 +112,15 @@ public class MJ_Card extends JButton{
 			gaming_page.BlockAllButSelect(mj_id);
 		}
 	};
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+arg0.getX()+5, this.getY()+arg0.getY()+5);
+	}
 }

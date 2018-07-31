@@ -7,23 +7,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-public class ChessColumn extends JLabel{
+public class ChessColumn extends JLabel implements MouseMotionListener,MouseListener{
 	int index;
 	boolean IsSet = false;
 	public ChessColumn(int index,Color bgcolor){
 		this.index = index;
-		setText(String.valueOf(index));
+		//setText(String.valueOf(index));
 		setForeground(Color.red);
-		setOpaque(true);
-		setBackground(bgcolor);
-		setSize(100,100);
+		//setOpaque(true);
+		//setBackground(bgcolor);
+		setSize(90,90);
 		setHorizontalAlignment(SwingConstants.CENTER);
 		setVerticalAlignment(SwingConstants.CENTER);
 		this.addMouseListener(listener);
+		this.addMouseMotionListener(this);
 	}
 	public Point getLoc(){
 		return this.getLocation();
@@ -55,4 +57,42 @@ public class ChessColumn extends JLabel{
 			}
 		}
 	};
+	
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		System.out.println(this.index);
+	}
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		System.out.printf("x=%d\ty=%d\tid=%d\n",this.getX()+arg0.getX(),this.getY()+arg0.getY(),this.index);
+		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+arg0.getX()+5, this.getY()+arg0.getY()+5);
+	}
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		System.out.printf("Chess ID =\t%d\n",this.index);
+	}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+    
 }

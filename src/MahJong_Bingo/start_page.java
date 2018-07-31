@@ -4,12 +4,15 @@ import javax.swing.JPanel;
 
 import java.awt.Image;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 
 public class start_page extends JPanel {
@@ -21,17 +24,22 @@ public class start_page extends JPanel {
 		setBounds(0, 0, 1200, 700);
 		
 		// set up button for starting a new game
-		JButton btnNewGame = new JButton("New Game");
+		JButton btnNewGame = new JButton();
+		this.SetJbutton(btnNewGame,
+						new ImageIcon(this.getClass().getResource("/start_game.png")).getImage(),
+						new ImageIcon(this.getClass().getResource("/start_game_active.png")).getImage());
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Control_Framework.switchPage(2);
 			}
 		});
-
-		btnNewGame.setBounds(525, 350, 150, 70);
+		btnNewGame.setBounds(500, 350, 190, 80);
 		
 		// set up button for explaining game rules
-		JButton btnGameRules = new JButton("Game Rules");
+		JButton btnGameRules = new JButton();
+		this.SetJbutton(btnGameRules,
+						new ImageIcon(this.getClass().getResource("/game_rules.png")).getImage(),
+						new ImageIcon(this.getClass().getResource("/game_rules_active.png")).getImage());
 		String gameRules = "Game Rules:\r\n" + 
 				"1) Draw 15 face-down Mahjong tiles.\r\n" + 
 				"2) Click to reveal the tiles.\r\n" + 
@@ -50,10 +58,13 @@ public class start_page extends JPanel {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnGameRules.setBounds(525, 450, 150, 70);
+		btnGameRules.setBounds(500, 450, 190, 80);
 		
 		// set up button which contains developers' info
 		JButton btnDeveloperInfo = new JButton("Developers' Info");
+		this.SetJbutton(btnDeveloperInfo,
+						new ImageIcon(this.getClass().getResource("/develop.png")).getImage(),
+						new ImageIcon(this.getClass().getResource("/develop_active.png")).getImage());
 		String info = "This little program is developed by Kevin Kwong, Martin Wong and Ken Teng for the NCKU exchange project.\n"
 				+ "Acknowlegdement:\n"
 				+ "Our team would like to thank Martin Persson for publicing these mahjong icons.";
@@ -62,7 +73,7 @@ public class start_page extends JPanel {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, info, "Developers' Information",JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeveloperInfo.setBounds(525, 550, 150, 70);
+		btnDeveloperInfo.setBounds(500, 550, 190, 80);
 		add(btnNewGame);
 		add(btnGameRules);
 		add(btnDeveloperInfo);
@@ -73,5 +84,26 @@ public class start_page extends JPanel {
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label);
+		
+		JLabel title_label = new JLabel();
+		Image title = new ImageIcon(this.getClass().getResource("/title.png")).getImage();
+		title_label.setIcon(new ImageIcon(title));
+		title_label.setBounds(325,0,600,400);
+		add(title_label,2);
+	}
+	
+	public void SetJbutton(JButton btn,Image btn_img,Image btn_actimg){
+		btn.setIcon(new ImageIcon(btn_img));
+		btn.setBorderPainted(false);
+		btn.setFocusPainted(false);
+		btn.setContentAreaFilled(false);
+		btn.addMouseListener(new MouseAdapter(){
+	         public void mouseEntered(MouseEvent me) {
+	     		btn.setIcon(new ImageIcon(btn_actimg));
+	          }
+	          public void mouseExited(MouseEvent me) {
+	      		btn.setIcon(new ImageIcon(btn_img));
+	          }
+		});
 	}
 }
