@@ -53,7 +53,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		JLabel chessTable = new JLabel();
 		Image chessTableImg = new ImageIcon(this.getClass().getResource("/gameTable.png")).getImage();
 		chessTable.setIcon(new ImageIcon(chessTableImg));
-		chessTable.setBounds(250, -30, 600, 600);
+		chessTable.setBounds(300, -30, 600, 600);
 		add(chessTable,1,0);
 		mj_col = new ChessColumn[6][6];
 		for(int i=0;i<6;i++){
@@ -66,7 +66,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 					cur_color = Color.BLACK;
 				}
 				mj_col[i][j] = new ChessColumn(((i*6)+j),cur_color);
-				mj_col[i][j].setLocation((j*90)+250, i*90);
+				mj_col[i][j].setLocation((j*90)+300, i*90);
 				add(mj_col[i][j],2,0);
 			}
 		}
@@ -191,7 +191,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				if(col==5 || row==5){
 					if(!CardListen){
 						System.out.println("You can Listen the Card");
-						JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enther the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enter the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
 						CardListen = true;
 						
 					}
