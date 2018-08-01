@@ -61,12 +61,12 @@ public class ChessColumn extends JLabel implements MouseMotionListener,MouseList
 	@Override
 	public void mouseDragged(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.println(this.index);
+		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+arg0.getX()+5, this.getY()+arg0.getY()+5);
 	}
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		System.out.printf("x=%d\ty=%d\tid=%d\n",this.getX()+arg0.getX(),this.getY()+arg0.getY(),this.index);
+		//System.out.printf("x=%d\ty=%d\tid=%d\n",this.getX()+arg0.getX(),this.getY()+arg0.getY(),this.index);
 		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+arg0.getX()+5, this.getY()+arg0.getY()+5);
 	}
 	@Override

@@ -15,7 +15,11 @@ public class Control_Framework extends JFrame {
 	static start_page start_Page = new start_page();
 	static drawing_page drawing_Page = new drawing_page();
 	static gaming_page gaming_Page = new gaming_page();
+	public static GrilStitch gril;
+	public static Stitch boy;
 	public static Control_Framework main_frame;
+	public static JLabel girldialog;
+	public static JLabel boydialog;
 	// framework initialization
 	public Control_Framework() {
 		setTitle("Mahjong Bingo!");
@@ -30,7 +34,14 @@ public class Control_Framework extends JFrame {
 		getContentPane().add(start_Page);
 		getContentPane().add(drawing_Page);
 		getContentPane().add(gaming_Page);
-		switchPage(1);	
+		//gril = new GrilStitch();
+		//add(gril,2,0);
+		//JLabel grilwall = new JLabel();
+		//grilwall.setBounds(900, 300, 300, 300);
+		//add(grilwall,3,0);
+		//gril.setLocation(900, 300);
+		switchPage(1);
+
 	}
 	
 	// control the showing page
@@ -40,18 +51,23 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(true);
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(false);
+				gril.setVisible(false);
+				boy.setVisible(false);
 				break;
 			case(2):
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(true);
 				gaming_Page.setVisible(false);
-				
+				gril.setVisible(true);
+				boy.setVisible(true);
 				break;
 			case(3):
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(true);
 				gaming_Page.putMJ();
+				gril.setVisible(true);
+				boy.setVisible(true);
 				break;
 		}
 	}

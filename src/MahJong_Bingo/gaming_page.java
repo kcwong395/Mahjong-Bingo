@@ -1,6 +1,7 @@
 package MahJong_Bingo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -53,7 +54,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		JLabel chessTable = new JLabel();
 		Image chessTableImg = new ImageIcon(this.getClass().getResource("/gameTable.png")).getImage();
 		chessTable.setIcon(new ImageIcon(chessTableImg));
-		chessTable.setBounds(300, -30, 600, 600);
+		chessTable.setBounds(300, 30, 540, 540);
 		add(chessTable,1,0);
 		mj_col = new ChessColumn[6][6];
 		for(int i=0;i<6;i++){
@@ -66,12 +67,43 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 					cur_color = Color.BLACK;
 				}
 				mj_col[i][j] = new ChessColumn(((i*6)+j),cur_color);
-				mj_col[i][j].setLocation((j*90)+300, i*90);
+				mj_col[i][j].setLocation((j*90)+300, (i*90)+30);
 				add(mj_col[i][j],2,0);
 			}
 		}
 		this.addMouseMotionListener(this);
+		Control_Framework.gril = new GrilStitch();
+		Control_Framework.boy = new Stitch();
+		add(Control_Framework.gril,2,0);
+		add(Control_Framework.boy,2,0);
+		//JLabel grilwall = new JLabel();
+		//grilwall.setBounds(900, 300, 300, 300);
+		//add(grilwall,3,0);
+		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.boy.setLocation(0, 250);
+		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.boy.setLocation(0, 250);
 	}
+	
+	public void addDialog(){
+		Control_Framework.girldialog = new JLabel("");
+		Control_Framework.girldialog.setBounds(900, 200, 200, 50);
+		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
+		Control_Framework.girldialog.setText("請選擇十五張牌組");
+		Control_Framework.girldialog.setBackground(Color.WHITE);
+		Control_Framework.girldialog.setOpaque(true);
+		Control_Framework.boydialog = new JLabel("");
+		Control_Framework.boydialog.setBounds(30, 200, 200, 50);
+		Control_Framework.boydialog.setFont(new Font("Serif", Font.BOLD, 20));
+		Control_Framework.boydialog.setText("Hello, I am a Boy");
+		Control_Framework.boydialog.setBackground(Color.WHITE);
+		Control_Framework.boydialog.setOpaque(true);
+		add(Control_Framework.girldialog,2,0);
+		add(Control_Framework.boydialog,2,0);
+		Control_Framework.boydialog.setVisible(false);
+		Control_Framework.girldialog.setVisible(false);
+	}
+	
 	public void putMJ(){
 		cardmap = drawing_page.GetMJ();
 		for(int i=0;i<6;i++){
@@ -129,12 +161,20 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			Control_Framework.main_frame.switchPage(1);
 			hasbeenListen = false;
 			CardListen = false;
+			WinGame = false;
 		}else{
 			if(CardListen && !hasbeenListen){
+				Control_Framework.gaming_Page.remove(Control_Framework.boydialog);
+				Control_Framework.gaming_Page.remove(Control_Framework.girldialog);
+				Control_Framework.drawing_Page.renewdialog();
 				drawing_page.ListenCard();
 				Control_Framework.main_frame.switchPage(2);
 				hasbeenListen = true;
 			}else{
+				Control_Framework.boydialog.setText("人類總是要犯同一個錯誤");
+				Control_Framework.girldialog.setText("還有下一次的");
+				Control_Framework.boydialog.setVisible(true);
+				Control_Framework.girldialog.setVisible(true);
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, "Oops, Maybe next time you will win", "GameOver",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
 				Control_Framework.main_frame.switchPage(1);
@@ -153,6 +193,10 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Cur_MJ.get(i).backOrg();
 			}else{
 				selectMJ =Cur_MJ.get(i);
+				//System.out.println(Control_Framework.gaming_Page.getComponentZOrder(selectMJ));
+				//Control_Framework.gaming_Page.setComponentZOrder(selectMJ, 36);
+				Control_Framework.gaming_Page.remove(selectMJ);
+				Control_Framework.gaming_Page.add(selectMJ,5,0);
 			}
 		}
 	}
@@ -170,6 +214,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			System.out.println("");
 		}
 		SumColRow();
+		SumSlash();
 	}
 	
 	public static void SumColRow(){
@@ -181,24 +226,63 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				row += checkmap[j][i];
 			}
 			System.out.printf("Row %d:\t%d\tCol %d:\t%d\n",i,col,i,row);
-			if(col>5 || row>5){
-				if(!WinGame){
-					System.out.println("You Win");
-					JOptionPane.showMessageDialog(Control_Framework.start_Page, "You did it!!!", "You Win",JOptionPane.INFORMATION_MESSAGE);
-					WinGame = true;
-				}
-			}else{
-				if(col==5 || row==5){
-					if(!CardListen){
-						System.out.println("You can Listen the Card");
-						JOptionPane.showMessageDialog(Control_Framework.start_Page, "You can enter the card listening section", "Listener",JOptionPane.INFORMATION_MESSAGE);
-						CardListen = true;
-						
-					}
-				}
-			}
+			CheckResult(col,row);
 			col = 0;
 			row = 0;
+		}
+	}
+	
+	public static void SumSlash(){
+		for(int i=0;i<checkmap.length;i++){
+			for(int k=0;k<checkmap[i].length;k++){
+				int sumlefttoright = 0;
+				int sumrighttoleft = 0;
+				if((k-0>=4 || 5-k>=4) && (i-0>=4 || 5-i>=4)){
+					if(5-k>=4 && (5-i>=4)){
+						int col = k;
+						int search = 5-k;
+						for(int j=i;j<=search;j++){
+							sumlefttoright += checkmap[j][col++];
+						}
+						System.out.printf("row = %d , col = %d ,Left to Right Slash = %d\n",i,k,sumlefttoright);
+					}
+					if(k>=4 && (5-i>=4)){
+						int search = k;
+						int row = 0;
+						for(int r=search;r>=0;r--){
+							sumrighttoleft += checkmap[row++][r];
+						}
+						System.out.printf("row = %d , col = %d ,Right to Left Slash = %d\n",i,k,sumrighttoleft);
+					}
+					CheckResult(sumlefttoright,sumrighttoleft);
+				}
+				}	
+			}
+		
+	}
+	
+	public static void CheckResult(int resultA,int resultB){
+		if(resultA>5 || resultB>5){
+			if(!WinGame){
+				System.out.println("You Win");
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "你成功了,運氣真好!!!", "你嬴了",JOptionPane.INFORMATION_MESSAGE);
+				WinGame = true;
+				Control_Framework.girldialog.setText("你嬴了,恭喜你");
+				Control_Framework.boydialog.setText("竟然....");
+				Control_Framework.girldialog.setVisible(true);
+				Control_Framework.boydialog.setVisible(true);
+			}
+		}else{
+			if(resultA==5 || resultB==5){
+				if(!CardListen){
+					System.out.println("You can Listen the Card");
+					JOptionPane.showMessageDialog(Control_Framework.start_Page, "你可以聽牌了!!!", "聽牌了",JOptionPane.INFORMATION_MESSAGE);
+					CardListen = true;
+					Control_Framework.boydialog.setText("可以聽牌不等於嬴喔~");
+					Control_Framework.boydialog.setVisible(true);
+					Control_Framework.girldialog.setVisible(false);
+				}
+			}
 		}
 	}
 	
@@ -206,9 +290,9 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		ClickMJ = bool;
 	}
 	@Override
-	public void mouseDragged(MouseEvent arg0) {
+	public void mouseDragged(MouseEvent arg0){
 		// TODO Auto-generated method stub
-		
+		if(this.ClickMJ)this.selectMJ.setLocation(arg0.getX()+5, arg0.getY()+5);
 	}
 	@Override
 	public void mouseMoved(MouseEvent arg0) {

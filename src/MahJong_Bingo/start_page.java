@@ -46,13 +46,13 @@ public class start_page extends JPanel {
 				"3) Drag the tiles to the correspondent place which shares the same picture.\r\n" + 
 				"4) If any six of the tiles complete a line, you win.\r\n" + 
 				"5) Get extra 3 tiles and continue the game if there are five tiles connected while no line is completed. \r\n" + 
-				"\r\n" + 
-				"絿��ㄩ\r\n" + 
-				"1ㄘ喲堤坋拻��齪\r\n" + 
-				"2ㄘ鎊眕楹嶱齪醱\r\n" + 
-				"3ㄘ迍嶺鎊祫偶\r\n" + 
-				"4ㄘ衄鞠��瞎傖珨�ㄗ眻訇諂褫ㄘㄛ��瞳\r\n" + 
-				"5ㄘ帤絻傖瞳璃ㄛ筍衄砩拻�頍B腔齪ㄛ陂腕謞俋腔��餞鴦絿";
+				"\r\n" 
+				+"遊戲規則：\n"
+				+ "1）抽出十五張麻將牌\n"
+				+ "2）點擊麻將以翻開牌面\n"
+				+ "3）拖拉麻將至對應圖案\n"
+				+ "4）如有六張麻將組成一條線（直橫斜皆可），則視作勝利\n"
+				+ "5）如未達成勝利條件，但有任意五張相連的牌，則獲得額外的三張牌並繼續遊戲\n";
 		btnGameRules.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, gameRules, "Game Rules",JOptionPane.INFORMATION_MESSAGE);
@@ -65,9 +65,10 @@ public class start_page extends JPanel {
 		this.SetJbutton(btnDeveloperInfo,
 						new ImageIcon(this.getClass().getResource("/develop.png")).getImage(),
 						new ImageIcon(this.getClass().getResource("/develop_active.png")).getImage());
-		String info = "This little program is developed by Kevin Kwong, Martin Wong and Ken Teng for the NCKU exchange project.\n"
+		String info = "This little program is developed by Kevin Kwong, Martin Wong and Ken Tang for the NCKU exchange project.\n"
+				+ "Our team does not own any rights to all pictures which we obtain from the internet and is totally based on educational purpose.\n\n"
 				+ "Acknowlegdement:\n"
-				+ "Our team would like to thank Martin Persson for publicing these mahjong icons.";
+				+ "We would like to thank Martin Persson for publicing those mahjong icons.";
 		btnDeveloperInfo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, info, "Developers' Information",JOptionPane.INFORMATION_MESSAGE);
@@ -80,7 +81,7 @@ public class start_page extends JPanel {
 		
 		// set up background
 		JLabel background_label = new JLabel("");
-		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
+		Image background = new ImageIcon(this.getClass().getResource("/background_front.png")).getImage();
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label);
