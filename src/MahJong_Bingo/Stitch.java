@@ -5,12 +5,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class Stitch extends JLabel{
+public class Stitch extends JLabel implements MouseMotionListener{
 	public Stitch(){
 		Image outlook= new ImageIcon(this.getClass().getResource("/Stitch.png")).getImage();
 		this.setIcon(new ImageIcon(outlook));
@@ -55,5 +56,18 @@ public class Stitch extends JLabel{
 
 			
 		});
+		this.addMouseMotionListener(this);
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+e.getX()+5, this.getY()+e.getY()+5);
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+e.getX()+5, this.getY()+e.getY()+5);
 	}
 }
