@@ -87,13 +87,13 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 	
 	public void addDialog(){
 		Control_Framework.girldialog = new JLabel("");
-		Control_Framework.girldialog.setBounds(900, 200, 200, 50);
+		Control_Framework.girldialog.setBounds(900, 200, 250, 50);
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
-		Control_Framework.girldialog.setText("請選擇十五張牌組");
+		Control_Framework.girldialog.setText("請選擇十五個麻雀");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
 		Control_Framework.boydialog = new JLabel("");
-		Control_Framework.boydialog.setBounds(30, 200, 200, 50);
+		Control_Framework.boydialog.setBounds(30, 200, 250, 50);
 		Control_Framework.boydialog.setFont(new Font("Serif", Font.BOLD, 20));
 		Control_Framework.boydialog.setText("Hello, I am a Boy");
 		Control_Framework.boydialog.setBackground(Color.WHITE);
@@ -156,7 +156,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 	
 	public static void CheckResult(){
 		if(WinGame){
-			JOptionPane.showMessageDialog(Control_Framework.start_Page, "You Score Is 10000", "You Win",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(Control_Framework.start_Page, "你嬴了,恭喜你", "You Win",JOptionPane.INFORMATION_MESSAGE);
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
 			hasbeenListen = false;
@@ -175,7 +175,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Control_Framework.girldialog.setText("還有下一次的");
 				Control_Framework.boydialog.setVisible(true);
 				Control_Framework.girldialog.setVisible(true);
-				JOptionPane.showMessageDialog(Control_Framework.start_Page, "Oops, Maybe next time you will win", "GameOver",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗仍兵家常事,大俠請重新投幣", "輸了",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
 				Control_Framework.main_frame.switchPage(1);
 				hasbeenListen = false;
