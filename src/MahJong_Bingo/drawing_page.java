@@ -92,7 +92,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
 		Control_Framework.girldialog.setBounds(900, 200, 250, 50);
-		Control_Framework.girldialog.setText("請選擇十五個麻雀");
+		Control_Framework.girldialog.setText("請選擇十五個麻將");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
 		Control_Framework.gril.setLocation(900, 270);
