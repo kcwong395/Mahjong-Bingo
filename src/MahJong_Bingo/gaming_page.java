@@ -175,7 +175,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Control_Framework.girldialog.setText("還有下一次的");
 				Control_Framework.boydialog.setVisible(true);
 				Control_Framework.girldialog.setVisible(true);
-				JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗仍兵家常事,大俠請重新投幣", "輸了",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗乃兵家常事,大俠請重新投幣", "輸了",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
 				Control_Framework.main_frame.switchPage(1);
 				hasbeenListen = false;
