@@ -30,7 +30,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 				drawing_page.ClickBoyCount++;
 				System.out.println(drawing_page.ClickBoyCount);
 				if(drawing_page.ClickBoyCount>=10){
-					Control_Framework.boydialog.setText("¦nµhªü T_T");
+					Control_Framework.boydialog.setText("é€²å…¥ä½œå¼Šæ¨¡å¼");
 					Control_Framework.boydialog.setVisible(true);
 					drawing_page.cheat = true;
 					outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();

@@ -89,7 +89,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setBounds(900, 200, 250, 50);
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
-		Control_Framework.girldialog.setText("½Ğ¿ï¾Ü¤Q¤­­Ó³Â³¶");
+		Control_Framework.girldialog.setText("è«‹é¸æ“‡åäº”å€‹éº»é›€");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
 		Control_Framework.boydialog = new JLabel("");
@@ -156,7 +156,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 	
 	public static void CheckResult(){
 		if(WinGame){
-			JOptionPane.showMessageDialog(Control_Framework.start_Page, "§A¾Æ¤F,®¥³ß§A", "You Win",JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(Control_Framework.start_Page, "ä½ å¬´äº†,æ­å–œä½ ", "ç²å‹",JOptionPane.INFORMATION_MESSAGE);
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
 			hasbeenListen = false;
@@ -171,11 +171,11 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Control_Framework.main_frame.switchPage(2);
 				hasbeenListen = true;
 			}else{
-				Control_Framework.boydialog.setText("¤HÃşÁ`¬O­n¥Ç¦P¤@­Ó¿ù»~");
-				Control_Framework.girldialog.setText("ÁÙ¦³¤U¤@¦¸ªº");
+				Control_Framework.boydialog.setText("äººé¡ç¸½æ˜¯è¦çŠ¯åŒä¸€å€‹éŒ¯èª¤");
+				Control_Framework.girldialog.setText("é‚„æœ‰ä¸‹ä¸€æ¬¡çš„");
 				Control_Framework.boydialog.setVisible(true);
 				Control_Framework.girldialog.setVisible(true);
-				JOptionPane.showMessageDialog(Control_Framework.start_Page, "³Ó±Ñ¤D§L®a±`¨Æ,¤j«L½Ğ­«·s§ë¹ô", "¿é¤F",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "å‹æ•—ä¹ƒå…µå®¶å¸¸äº‹,å¤§ä¿ è«‹é‡æ–°æŠ•å¹£", "Gameover",JOptionPane.INFORMATION_MESSAGE);
 				Control_Framework.main_frame.RenewPanel();
 				Control_Framework.main_frame.switchPage(1);
 				hasbeenListen = false;
@@ -265,10 +265,10 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		if(resultA>5 || resultB>5){
 			if(!WinGame){
 				System.out.println("You Win");
-				JOptionPane.showMessageDialog(Control_Framework.start_Page, "§A¦¨¥\¤F,¹B®ğ¯u¦n!!!", "§A¾Æ¤F",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "ä½ æˆåŠŸäº†,é‹æ°£çœŸå¥½!!!", "ç²å‹",JOptionPane.INFORMATION_MESSAGE);
 				WinGame = true;
-				Control_Framework.girldialog.setText("§A¾Æ¤F,®¥³ß§A");
-				Control_Framework.boydialog.setText("³ºµM....");
+				Control_Framework.girldialog.setText("Â§AÂ¾Ã†Â¤F,Â®Â¥Â³ÃŸÂ§A");
+				Control_Framework.boydialog.setText("Â³ÂºÂµM....");
 				Control_Framework.girldialog.setVisible(true);
 				Control_Framework.boydialog.setVisible(true);
 			}
@@ -276,9 +276,9 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			if(resultA==5 || resultB==5){
 				if(!CardListen){
 					System.out.println("You can Listen the Card");
-					JOptionPane.showMessageDialog(Control_Framework.start_Page, "§A¥i¥HÅ¥µP¤F!!!", "Å¥µP¤F",JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(Control_Framework.start_Page, "ä½ å¯ä»¥è½ç‰Œäº†!!!", "è½ç‰Œéšæ®µ",JOptionPane.INFORMATION_MESSAGE);
 					CardListen = true;
-					Control_Framework.boydialog.setText("¥i¥HÅ¥µP¤£µ¥©ó¾Æ³á~");
+					Control_Framework.boydialog.setText("å¯ä»¥è½ç‰Œä¸ç­‰æ–¼å¬´å–”~");
 					Control_Framework.boydialog.setVisible(true);
 					Control_Framework.girldialog.setVisible(false);
 				}
