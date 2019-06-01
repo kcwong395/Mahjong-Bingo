@@ -28,11 +28,13 @@ public class drawing_page extends JLayeredPane {
 	int[] mjnum = new int[36];	// array to store id of tile
 	public static boolean listCardSection = false;
 	int canlist = 0;
+	
 	public drawing_page() {
 		setVisible(false);
 		setLayout(null);
 		setBounds(0, 0, 1200, 700);
 		listCardSection = false;
+		
 		// After drawing 15 tiles, this button will appear and bring user to gaming page
 		gameBegin = new JButton("Start");
 		gameBegin.addActionListener(new ActionListener() {
@@ -42,35 +44,32 @@ public class drawing_page extends JLayeredPane {
 			}
 		});
 		gameBegin.setBounds(525, 315, 150, 70);
+		// end of game start button
 		
+		// initialize the mjtable
 		ArrayList<Integer> mjtable = new ArrayList();
-		for(int i=0;i<36;i++){  // to add tiles to the arraylist (in a style of 1:id, 2:id ... and so on
+		for(int i = 0; i < 36; i++){  // to add tiles to the arraylist (in a style of 1:id, 2:id ... and so on
 			mjtable.add(i);
 		}
 		
 		// this part is to assign a random id (without repeated) to each tile
-		
 		int count = 0;
 		if(!cheat){
-			while(mjtable.size()>0){
-				int id =(int) (mjtable.size()*Math.random());
-				mjnum[count]=mjtable.get(id);	// assign a random number to every tile as their id
+			while(mjtable.size() > 0){
+				int id = (int)(mjtable.size() * Math.random());
+				mjnum[count] = mjtable.get(id);	// assign a random number to every tile as their id
 				mjtable.remove(id);	// remove the used id
 				count++;
 			}
-		}else{
-			for(int i=0;i<mjnum.length;i++){
+		}
+		else{
+			for(int i = 0; i < mjnum.length; i++){
 				mjnum[i] = i;
 			}
 		}
-
-		
 		
 		//for testing
-		
-
-		
-		// new mahjong tiles for drawing
+		// generate mahjong tiles for drawing
 		
 		drawing_tile(); // new mahjong tiles for drawing
 		
@@ -79,7 +78,7 @@ public class drawing_page extends JLayeredPane {
 		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
-		add(background_label,1,0);
+		add(background_label, 1, 0);
 		Control_Framework.gril = new GrilStitch();
 		Control_Framework.boy = new Stitch();
 		add(Control_Framework.gril,2,0);
@@ -92,7 +91,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
 		Control_Framework.girldialog.setBounds(900, 200, 250, 50);
-		Control_Framework.girldialog.setText("½Ð¿ï¾Ü¤Q¤­­Ó³Â±N");
+		Control_Framework.girldialog.setText("è«‹æŠ½å–åäº”å¼µéº»å°‡");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
 		Control_Framework.gril.setLocation(900, 270);
@@ -126,12 +125,12 @@ public class drawing_page extends JLayeredPane {
 								tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
 								tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 								drawedCount++;
-								tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+								tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ã’Â»ÃˆfÂ£Â¬2=Æ’Ã‰Ãˆf, etc)
 								System.out.println(tile[rowF][colF].GetId());
 								tile[rowF][colF].Select();
-								if(drawedCount==15){
-									add(gameBegin,3,0);	
-									Control_Framework.boydialog.setText("«östart¶}©l¹CÀ¸§a~");
+								if(drawedCount == 15){
+									add(gameBegin, 3, 0);	
+									Control_Framework.boydialog.setText("Â«Ã¶startÂ¶}Â©lÂ¹CÃ€Â¸Â§a~");
 									Control_Framework.boydialog.setVisible(true);
 									Control_Framework.girldialog.setVisible(false);
 								}
@@ -146,7 +145,7 @@ public class drawing_page extends JLayeredPane {
 										tile[rowF][colF].SetLoc(((canlist)*50)+200, 580);
 										tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 										canlist++;
-										tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+										tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ã’Â»ÃˆfÂ£Â¬2=Æ’Ã‰Ãˆf, etc)
 										System.out.println(tile[rowF][colF].GetId());
 										tile[rowF][colF].Select();
 										if(canlist==3)gameBegin.setVisible(true);
@@ -166,9 +165,9 @@ public class drawing_page extends JLayeredPane {
 	public static void ListenCard(){
 		listCardSection = true;
 		gameBegin.setVisible(false);
-		Control_Framework.boydialog.setText("©ñ±ó§a");
+		Control_Framework.boydialog.setText("Â©Ã±Â±Ã³Â§a");
 		Control_Framework.boydialog.setVisible(true);
-		Control_Framework.girldialog.setText("¥[ªoªü,ÁÙ¦³¾÷·|");
+		Control_Framework.girldialog.setText("Â¥[ÂªoÂªÃ¼,ÃÃ™Â¦Â³Â¾Ã·Â·|");
 		Control_Framework.girldialog.setVisible(true);
 		
 	}
@@ -181,7 +180,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
 		Control_Framework.girldialog.setBounds(900, 200, 200, 50);
-		Control_Framework.girldialog.setText("½Ð¿ï¾Ü¤Q¤­±iµP²Õ");
+		Control_Framework.girldialog.setText("è«‹æŠ½å–åäº”å¼µéº»å°‡");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
 		Control_Framework.gril.setLocation(900, 270);
@@ -196,7 +195,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.drawing_Page.add(Control_Framework.boydialog,2,0);
 	}
 	
-	public static MJ_Card[][] GetMJ(){
+	public static MJ_Card[][] GetMJ() {
 		return tile;
 	}
 }

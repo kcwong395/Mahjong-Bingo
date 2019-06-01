@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 
 public class MJ_Card extends JButton implements MouseMotionListener{
 
-	private int mj_id, col, row,org_x,org_y;
-	private Image backview,frontview;
+	private int mj_id, col, row, org_x, org_y;
+	private Image backview, frontview;
 	private boolean flag = false;
 	private boolean stage = false;
 	public MJ_Card(int mj_id, int col, int row, Image backview){

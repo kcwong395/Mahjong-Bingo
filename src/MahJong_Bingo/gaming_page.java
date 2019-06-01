@@ -27,8 +27,8 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 	private static boolean WinGame = false;
 	private static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
-	public gaming_page() {
-		
+	
+	public gaming_page() {	
 		Cur_MJ = new ArrayList<MJ_Card>();
 		setVisible(false);
 		setLayout(null);
@@ -261,8 +261,8 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		
 	}
 	
-	public static void CheckResult(int resultA,int resultB){
-		if(resultA>5 || resultB>5){
+	public static void CheckResult(int resultA, int resultB){
+		if(resultA > 5 || resultB > 5){
 			if(!WinGame){
 				System.out.println("You Win");
 				JOptionPane.showMessageDialog(Control_Framework.start_Page, "你成功了,運氣真好!!!", "獲勝",JOptionPane.INFORMATION_MESSAGE);
@@ -272,8 +272,9 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Control_Framework.girldialog.setVisible(true);
 				Control_Framework.boydialog.setVisible(true);
 			}
-		}else{
-			if(resultA==5 || resultB==5){
+		}
+		else{
+			if(resultA == 5 || resultB == 5){
 				if(!CardListen){
 					System.out.println("You can Listen the Card");
 					JOptionPane.showMessageDialog(Control_Framework.start_Page, "你可以聽牌了!!!", "聽牌階段",JOptionPane.INFORMATION_MESSAGE);
