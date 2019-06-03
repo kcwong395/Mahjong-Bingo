@@ -19,37 +19,25 @@ import javax.swing.JPanel;
 public class gaming_page extends JPanel implements MouseMotionListener{
 	static ChessColumn[][] mj_col;
 	MJ_Card[][] cardmap;
-	static ArrayList<MJ_Card> Cur_MJ;
+	static ArrayList<MJ_Card> Cur_MJ = new ArrayList<MJ_Card>();
 	public static boolean ClickMJ = false;
 	static int select_value;
 	static MJ_Card selectMJ;
-	private static boolean endGame = false;
-	private static boolean hasbeenListen = false;
+	private static boolean quit = false;
+	public static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
 	
-	public gaming_page() {	
-		Cur_MJ = new ArrayList<MJ_Card>();
+	public gaming_page() {
 		setVisible(false);
 		setLayout(null);
 		setBounds(0, 0, 1200, 700);
-		//cardmap = drawing_page.GetMJ();
-		//for(int i=0;i<6;i++){
-		//	for(int j=0;j<6;j++){
-		//		add(cardmap[i][j]);
-		//		cardmap[i][j].setLocation(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
-		//		cardmap[i][j].setVisible(true);
-		//	}
-		//}
+
 		JLabel background_label = new JLabel("");
 		Image background = new ImageIcon(this.getClass().getResource("/background.jpg")).getImage();
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label,1,0);
-		//JLabel testlabel = new JLabel(String.valueOf(1));
-		//testlabel.setBounds(50,200,100,100);
-		//testlabel.setOpaque(true);
-		//testlabel.setBackground(Color.red);
-		//add(testlabel,2,0);
+
 		JLabel chessTable = new JLabel();
 		Image chessTableImg = new ImageIcon(this.getClass().getResource("/gameTable.png")).getImage();
 		chessTable.setIcon(new ImageIcon(chessTableImg));
@@ -104,26 +92,13 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		cardmap = drawing_page.GetMJ();
 		for(int i=0;i<6;i++){
 			for(int j=0;j<6;j++){
-				final int row = i;
-				final int col = i;
 				if(cardmap[i][j].Selected()){
-				add(cardmap[i][j],3,0);
-				cardmap[i][j].setLocation(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
-				cardmap[i][j].setVisible(true);
-				cardmap[i][j].setOrg(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
-				/*
-				cardmap[i][j].addActionListener(new ActionListener(){
-					public void actionPerformed(ActionEvent evt) {
-						System.out.println("Hi");
-						System.out.println(evt.getClass().getName());
-						cardmap[row][col].ChangeFront();
-					}
-				});
-				*/
-				cardmap[i][j].putlistner();
-				//cardmap[i][j].ChangeFront();
-				Cur_MJ.add(cardmap[i][j]);
-				
+					add(cardmap[i][j],3,0);
+					cardmap[i][j].setLocation(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
+					cardmap[i][j].setVisible(true);
+					cardmap[i][j].setOrg(cardmap[i][j].GetCol(), cardmap[i][j].GetRow());
+					cardmap[i][j].putlistner();
+					Cur_MJ.add(cardmap[i][j]);
 				}
 			}
 		}
@@ -145,11 +120,6 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 		Cur_MJ.remove(idx);
 		CheckMap();
 		SetClickMJ(false);
-		/*
-		if(Cur_MJ.size()==0){
-			CheckResult();
-		}
-		*/
 	}
 	
 	public static void BlockAllButSelect(int select){
@@ -161,8 +131,6 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 				Cur_MJ.get(i).backOrg();
 			}else{
 				selectMJ =Cur_MJ.get(i);
-				//System.out.println(Control_Framework.gaming_Page.getComponentZOrder(selectMJ));
-				//Control_Framework.gaming_Page.setComponentZOrder(selectMJ, 36);
 				Control_Framework.gaming_Page.remove(selectMJ);
 				Control_Framework.gaming_Page.add(selectMJ,5,0);
 			}
@@ -196,7 +164,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			}
 			System.out.printf("Row %d:\t%d\tCol %d:\t%d\n",i,col,i,row);
 			CheckResult(col,row);
-			if(endGame) break;
+			if(quit) break;
 			col = 0;
 			row = 0;
 		}
@@ -225,7 +193,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 						}
 						System.out.printf("row = %d , col = %d ,Right to Left Slash = %d\n",i,k,sumrighttoleft);
 					}
-					if(endGame) break;
+					if(quit) break;
 					CheckResult(sumlefttoright,sumrighttoleft);
 				}
 			}	
@@ -242,20 +210,25 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			JOptionPane.showMessageDialog(Control_Framework.start_Page, "你成功了,運氣真好!!!", "獲勝",JOptionPane.INFORMATION_MESSAGE);
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
+			drawing_page.ClickBoyCount = 0;
 			hasbeenListen = false;
-			endGame = true;
+			Cur_MJ = new ArrayList<MJ_Card>(); // clear existing mj on the game table
+			quit = true;
 		}
-		else if((resultA == 5 || resultB == 5) && !hasbeenListen && Cur_MJ.size() == 0){
-			JOptionPane.showMessageDialog(Control_Framework.start_Page, "你可以聽牌了!!!", "聽牌階段",JOptionPane.INFORMATION_MESSAGE);					
+		else if((resultA == 5 || resultB == 5) && !hasbeenListen) {
 			Control_Framework.boydialog.setText("可以聽牌不等於嬴喔~");
 			Control_Framework.boydialog.setVisible(true);
-			Control_Framework.girldialog.setVisible(false);
-			Control_Framework.gaming_Page.remove(Control_Framework.boydialog);
-			Control_Framework.gaming_Page.remove(Control_Framework.girldialog);
-			Control_Framework.drawing_Page.renewdialog();
-			drawing_page.ListenCard();
-			Control_Framework.main_frame.switchPage(2);
-			hasbeenListen = true;
+			if(Cur_MJ.size() == 0){
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "你可以聽牌了!!!", "聽牌階段",JOptionPane.INFORMATION_MESSAGE);
+				Control_Framework.boydialog.setVisible(true);
+				Control_Framework.girldialog.setVisible(false);
+				Control_Framework.gaming_Page.remove(Control_Framework.boydialog);
+				Control_Framework.gaming_Page.remove(Control_Framework.girldialog);
+				Control_Framework.drawing_Page.renewdialog();
+				drawing_page.ListenCard();
+				Control_Framework.main_frame.switchPage(2);
+				quit = true;
+			}
 		}
 		else if(Cur_MJ.size() == 0) {
 			Control_Framework.boydialog.setText("人類總是要犯同一個錯誤");
@@ -265,8 +238,10 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗乃兵家常事,大俠請重新投幣", "Gameover",JOptionPane.INFORMATION_MESSAGE);
 			Control_Framework.main_frame.RenewPanel();
 			Control_Framework.main_frame.switchPage(1);
+			drawing_page.ClickBoyCount = 0;
 			hasbeenListen = false;
-			endGame = true;
+			Cur_MJ = new ArrayList<MJ_Card>();
+			quit = true;
 		}
 	}
 	

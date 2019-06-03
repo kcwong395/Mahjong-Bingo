@@ -69,7 +69,7 @@ public class drawing_page extends JLayeredPane {
 		}
 		
 		// generate mahjong tiles for drawing
-		drawing_tile(); // new mahjong tiles for drawing
+		drawing_tile(); 
 		
 		// set up background
 		JLabel background_label = new JLabel("");
@@ -108,12 +108,15 @@ public class drawing_page extends JLayeredPane {
 	
 	// assigning tiles location & importing pic
 	public void drawing_tile() {
+		
+		// reinitialize the tile in order
 		if(cheat) {
 			for(int i = 0; i < mjnum.length; i++){
 				mjnum[i] = i;
 			}
 			cheat = false;
 		}
+		
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 6; col++) {
 				final int rowF = row;
@@ -123,50 +126,49 @@ public class drawing_page extends JLayeredPane {
 				tile[row][col].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						if(cheat) {
+							
 							// this is to make the existing tiles disappear
 							for(int i = 0; i < 6; i++){
 								for(int j = 0; j < 6; j++) {
 									tile[i][j].setVisible(false);
 								}
 							}
+							
 							// reinitialize the tiles
 							drawing_tile();
-							drawedCount = 0;
+							drawedCount = 0; 
+							
 						}
 						else if(drawedCount < 15) {
+							
 							// if a tile is selected, move it to the bottom
 							if(!tile[rowF][colF].Selected()){
-								tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
+								tile[rowF][colF].SetLoc(((drawedCount++)*50)+200, 580);
 								tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
-								drawedCount++;
 								tile[rowF][colF].ToString(); 
 								System.out.println(tile[rowF][colF].GetId());
 								tile[rowF][colF].Select();
+							}
 								
-								// enable the player to start once 15 tiles are drawed
-								if(drawedCount == 15){
-									add(gameBegin, 3, 0);	
-									Control_Framework.boydialog.setText("快開始吧");
-									Control_Framework.boydialog.setVisible(true);
-									Control_Framework.girldialog.setVisible(false);
-								}
+							// enable the player to start once 15 tiles are drawled
+							if(drawedCount == 15){
+								add(gameBegin, 3, 0);	
+								Control_Framework.boydialog.setText("快開始吧");
+								Control_Framework.boydialog.setVisible(true);
+								Control_Framework.girldialog.setVisible(false);
 							}
 						}
-						else{
-							if(listCardSection){
-								
-								if(canlist < 3){
-									if(!tile[rowF][colF].Selected()){
-										//tile[rowF][colF].setVisible(false);
-										tile[rowF][colF].SetLoc(((canlist)*50)+200, 580);
-										tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
-										canlist++;
-										tile[rowF][colF].ToString();
-										System.out.println(tile[rowF][colF].GetId());
-										tile[rowF][colF].Select();
-										if(canlist == 3) gameBegin.setVisible(true);
-									}
-								}
+						else if(listCardSection){
+							if(canlist < 3 && !tile[rowF][colF].Selected()){
+								tile[rowF][colF].SetLoc(((canlist++)*50)+200, 580);
+								tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
+								tile[rowF][colF].ToString();
+								System.out.println(tile[rowF][colF].GetId());
+								tile[rowF][colF].Select();
+							}
+							if(canlist == 3) {
+								gameBegin.setVisible(true);
+								gaming_page.hasbeenListen = true;	
 							}
 						}
 					}
@@ -180,9 +182,8 @@ public class drawing_page extends JLayeredPane {
 	public static void ListenCard(){
 		listCardSection = true;
 		gameBegin.setVisible(false);
-		Control_Framework.boydialog.setText("©ñ±ó§a");
-		Control_Framework.boydialog.setVisible(true);
-		Control_Framework.girldialog.setText("¥[ªoªü,ÁÙ¦³¾÷·|");
+		Control_Framework.boydialog.setVisible(false);
+		Control_Framework.girldialog.setText("請抽取三張麻將");
 		Control_Framework.girldialog.setVisible(true);
 		
 	}

@@ -92,6 +92,7 @@ public class start_page extends JPanel {
 		add(btnDeveloperInfo);
 		
 		// setup background and title
+		
 		// this sets up the background
 		JLabel background_label = new JLabel("");
 		Image background = new ImageIcon(this.getClass().getResource("/background_front.png")).getImage();
@@ -114,12 +115,13 @@ public class start_page extends JPanel {
 		btn.setFocusPainted(false);
 		btn.setContentAreaFilled(false);
 		btn.addMouseListener(new MouseAdapter(){
-	         public void mouseEntered(MouseEvent me) {
-	     		btn.setIcon(new ImageIcon(btn_actimg));
-	          }
-	          public void mouseExited(MouseEvent me) {
+			// when mouse is over the button
+			public void mouseEntered(MouseEvent me) {
+				btn.setIcon(new ImageIcon(btn_actimg));
+	        }
+	        public void mouseExited(MouseEvent me) {
 	      		btn.setIcon(new ImageIcon(btn_img));
-	          }
+	        }
 		});
 	}
 }

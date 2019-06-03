@@ -15,6 +15,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 	Image outlook;
 	public Stitch(boolean isBoy){
 		if(isBoy) {
+			// outlook for stitch in normal mode and cheating mode
 			if(Control_Framework.drawing_Page.cheat){
 				outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();
 			}
@@ -23,6 +24,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 			}
 		}
 		else {
+			// outlook for angel
 			outlook= new ImageIcon(this.getClass().getResource("/Angel_transparent_try.png")).getImage();
 		}
 		this.setIcon(new ImageIcon(outlook));
@@ -34,7 +36,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 				// TODO Auto-generated method stub
 				if(isBoy) {
 					drawing_page.ClickBoyCount++;
-					System.out.println(drawing_page.ClickBoyCount);
+					// get into cheat mode if 10 times is clicked
 					if(drawing_page.ClickBoyCount>=10){
 						Control_Framework.boydialog.setText("進入作弊模式");
 						Control_Framework.boydialog.setVisible(true);
@@ -44,7 +46,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 					}
 				}
 			}
-			
+// <------------------------------------------------------- unused code ---------------------------------------------------------->
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
@@ -77,12 +79,10 @@ public class Stitch extends JLabel implements MouseMotionListener{
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+e.getX()+5, this.getY()+e.getY()+5);
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
-		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+e.getX()+5, this.getY()+e.getY()+5);
 	}
 }

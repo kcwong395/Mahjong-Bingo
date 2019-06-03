@@ -17,10 +17,7 @@ public class ChessColumn extends JLabel implements MouseMotionListener,MouseList
 	boolean IsSet = false;
 	public ChessColumn(int index,Color bgcolor){
 		this.index = index;
-		//setText(String.valueOf(index));
 		setForeground(Color.red);
-		//setOpaque(true);
-		//setBackground(bgcolor);
 		setSize(90,90);
 		setHorizontalAlignment(SwingConstants.CENTER);
 		setVerticalAlignment(SwingConstants.CENTER);
@@ -66,7 +63,6 @@ public class ChessColumn extends JLabel implements MouseMotionListener,MouseList
 	@Override
 	public void mouseMoved(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		//System.out.printf("x=%d\ty=%d\tid=%d\n",this.getX()+arg0.getX(),this.getY()+arg0.getY(),this.index);
 		if(gaming_page.ClickMJ)gaming_page.selectMJ.setLocation(this.getX()+arg0.getX()+5, this.getY()+arg0.getY()+5);
 	}
 	@Override
