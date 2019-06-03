@@ -79,11 +79,11 @@ public class drawing_page extends JLayeredPane {
 		add(background_label, 1, 0);
 		
 		// initial stitch
-		Control_Framework.gril = new GrilStitch();
-		Control_Framework.boy = new Stitch();
-		add(Control_Framework.gril,2,0);
+		Control_Framework.girl = new Stitch(false);
+		Control_Framework.boy = new Stitch(true);
+		add(Control_Framework.girl,2,0);
 		add(Control_Framework.boy,2,0);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
@@ -91,7 +91,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.girldialog.setText("請抽取十五張麻將");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 		Control_Framework.boydialog = new JLabel("");
 		Control_Framework.boydialog.setFont(new Font("Serif", Font.BOLD, 20));
@@ -190,7 +190,7 @@ public class drawing_page extends JLayeredPane {
 	public static void renewdialog(){
 		Control_Framework.drawing_Page.remove(Control_Framework.boydialog);
 		Control_Framework.drawing_Page.remove(Control_Framework.girldialog);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 		Control_Framework.girldialog = new JLabel("");
 		Control_Framework.girldialog.setFont(new Font("Serif", Font.BOLD, 20));
@@ -198,7 +198,7 @@ public class drawing_page extends JLayeredPane {
 		Control_Framework.girldialog.setText("請抽取十五張麻將");
 		Control_Framework.girldialog.setBackground(Color.WHITE);
 		Control_Framework.girldialog.setOpaque(true);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 		Control_Framework.boydialog = new JLabel("");
 		Control_Framework.boydialog.setFont(new Font("Serif", Font.BOLD, 20));

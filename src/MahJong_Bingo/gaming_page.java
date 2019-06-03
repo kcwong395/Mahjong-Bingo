@@ -71,16 +71,13 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			}
 		}
 		this.addMouseMotionListener(this);
-		Control_Framework.gril = new GrilStitch();
-		Control_Framework.boy = new Stitch();
-		add(Control_Framework.gril,2,0);
+		Control_Framework.girl = new Stitch(false);
+		Control_Framework.boy = new Stitch(true);
+		add(Control_Framework.girl,2,0);
 		add(Control_Framework.boy,2,0);
-		//JLabel grilwall = new JLabel();
-		//grilwall.setBounds(900, 300, 300, 300);
-		//add(grilwall,3,0);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
-		Control_Framework.gril.setLocation(900, 270);
+		Control_Framework.girl.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 	}
 	
@@ -248,19 +245,17 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			hasbeenListen = false;
 			endGame = true;
 		}
-		else if((resultA == 5 || resultB == 5) && !hasbeenListen){
+		else if((resultA == 5 || resultB == 5) && !hasbeenListen && Cur_MJ.size() == 0){
 			JOptionPane.showMessageDialog(Control_Framework.start_Page, "你可以聽牌了!!!", "聽牌階段",JOptionPane.INFORMATION_MESSAGE);					
 			Control_Framework.boydialog.setText("可以聽牌不等於嬴喔~");
 			Control_Framework.boydialog.setVisible(true);
 			Control_Framework.girldialog.setVisible(false);
-			if(Cur_MJ.size() == 0) {
-				Control_Framework.gaming_Page.remove(Control_Framework.boydialog);
-				Control_Framework.gaming_Page.remove(Control_Framework.girldialog);
-				Control_Framework.drawing_Page.renewdialog();
-				drawing_page.ListenCard();
-				Control_Framework.main_frame.switchPage(2);
-				hasbeenListen = true;
-			}
+			Control_Framework.gaming_Page.remove(Control_Framework.boydialog);
+			Control_Framework.gaming_Page.remove(Control_Framework.girldialog);
+			Control_Framework.drawing_Page.renewdialog();
+			drawing_page.ListenCard();
+			Control_Framework.main_frame.switchPage(2);
+			hasbeenListen = true;
 		}
 		else if(Cur_MJ.size() == 0) {
 			Control_Framework.boydialog.setText("人類總是要犯同一個錯誤");

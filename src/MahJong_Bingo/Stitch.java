@@ -13,13 +13,18 @@ import javax.swing.JLabel;
 
 public class Stitch extends JLabel implements MouseMotionListener{
 	Image outlook;
-	public Stitch(){
-		if(Control_Framework.drawing_Page.cheat){
-			outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();
-		}else{
-			outlook= new ImageIcon(this.getClass().getResource("/Stitch.png")).getImage();
+	public Stitch(boolean isBoy){
+		if(isBoy) {
+			if(Control_Framework.drawing_Page.cheat){
+				outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();
+			}
+			else{
+				outlook= new ImageIcon(this.getClass().getResource("/Stitch.png")).getImage();
+			}
 		}
-		
+		else {
+			outlook= new ImageIcon(this.getClass().getResource("/Angel_transparent_try.png")).getImage();
+		}
 		this.setIcon(new ImageIcon(outlook));
 		this.setSize(300,300);
 		this.addMouseListener(new MouseListener(){
@@ -27,14 +32,16 @@ public class Stitch extends JLabel implements MouseMotionListener{
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-				drawing_page.ClickBoyCount++;
-				System.out.println(drawing_page.ClickBoyCount);
-				if(drawing_page.ClickBoyCount>=10){
-					Control_Framework.boydialog.setText("進入作弊模式");
-					Control_Framework.boydialog.setVisible(true);
-					drawing_page.cheat = true;
-					outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();
-					setIcon(new ImageIcon(outlook));
+				if(isBoy) {
+					drawing_page.ClickBoyCount++;
+					System.out.println(drawing_page.ClickBoyCount);
+					if(drawing_page.ClickBoyCount>=10){
+						Control_Framework.boydialog.setText("進入作弊模式");
+						Control_Framework.boydialog.setVisible(true);
+						drawing_page.cheat = true;
+						outlook= new ImageIcon(this.getClass().getResource("/Stitch_Re.png")).getImage();
+						setIcon(new ImageIcon(outlook));
+					}
 				}
 			}
 			

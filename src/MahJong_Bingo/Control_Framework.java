@@ -17,7 +17,7 @@ public class Control_Framework extends JFrame {
 	static start_page start_Page = new start_page();
 	static drawing_page drawing_Page = new drawing_page();
 	static gaming_page gaming_Page = new gaming_page();
-	public static GrilStitch gril;
+	public static Stitch girl;
 	public static Stitch boy;
 	public static JLabel girldialog;
 	public static JLabel boydialog;
@@ -46,7 +46,7 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(true);
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(false);
-				gril.setVisible(false);
+				girl.setVisible(false);
 				boy.setVisible(false);
 				break;
 				
@@ -54,7 +54,7 @@ public class Control_Framework extends JFrame {
 				start_Page.setVisible(false);
 				drawing_Page.setVisible(true);
 				gaming_Page.setVisible(false);
-				gril.setVisible(true);
+				girl.setVisible(true);
 				boy.setVisible(true);
 				break;
 				
@@ -63,7 +63,7 @@ public class Control_Framework extends JFrame {
 				drawing_Page.setVisible(false);
 				gaming_Page.setVisible(true);
 				gaming_Page.putMJ();
-				gril.setVisible(true);
+				girl.setVisible(true);
 				boy.setVisible(true);
 				break;
 		}
