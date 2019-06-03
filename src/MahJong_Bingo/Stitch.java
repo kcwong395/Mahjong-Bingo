@@ -37,7 +37,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 					setIcon(new ImageIcon(outlook));
 				}
 			}
-
+			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub

@@ -68,9 +68,7 @@ public class drawing_page extends JLayeredPane {
 			}
 		}
 		
-		//for testing
 		// generate mahjong tiles for drawing
-		
 		drawing_tile(); // new mahjong tiles for drawing
 		
 		// set up background
@@ -79,13 +77,12 @@ public class drawing_page extends JLayeredPane {
 		background_label.setIcon(new ImageIcon(background));
 		background_label.setBounds(0, 0, 1200, 700);
 		add(background_label, 1, 0);
+		
+		// initial stitch
 		Control_Framework.gril = new GrilStitch();
 		Control_Framework.boy = new Stitch();
 		add(Control_Framework.gril,2,0);
 		add(Control_Framework.boy,2,0);
-		//JLabel grilwall = new JLabel();
-		//grilwall.setBounds(900, 300, 300, 300);
-		//add(grilwall,3,0);
 		Control_Framework.gril.setLocation(900, 270);
 		Control_Framework.boy.setLocation(0, 250);
 		Control_Framework.girldialog = new JLabel("");
@@ -111,48 +108,66 @@ public class drawing_page extends JLayeredPane {
 	
 	// assigning tiles location & importing pic
 	public void drawing_tile() {
+		if(cheat) {
+			for(int i = 0; i < mjnum.length; i++){
+				mjnum[i] = i;
+			}
+			cheat = false;
+		}
 		for(int row = 0; row < 6; row++) {
 			for(int col = 0; col < 6; col++) {
 				final int rowF = row;
 				final int colF = col;
-				tile[row][col] = new MJ_Card(mjnum[row * 6 + col], col, row, new ImageIcon(this.getClass().getResource("/face-down-128px.png")).getImage()); // id, column to design x, row to design y, icon image
-				System.out.println();
+				// id, column to design x, row to design y, icon image
+				tile[row][col] = new MJ_Card(mjnum[row * 6 + col], col, row, new ImageIcon(this.getClass().getResource("/face-down-128px.png")).getImage()); 
 				tile[row][col].addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						if(drawedCount < 15) {
+						if(cheat) {
+							// this is to make the existing tiles disappear
+							for(int i = 0; i < 6; i++){
+								for(int j = 0; j < 6; j++) {
+									tile[i][j].setVisible(false);
+								}
+							}
+							// reinitialize the tiles
+							drawing_tile();
+							drawedCount = 0;
+						}
+						else if(drawedCount < 15) {
+							// if a tile is selected, move it to the bottom
 							if(!tile[rowF][colF].Selected()){
-								//tile[rowF][colF].setVisible(false);
 								tile[rowF][colF].SetLoc(((drawedCount)*50)+200, 580);
 								tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 								drawedCount++;
-								tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+								tile[rowF][colF].ToString(); 
 								System.out.println(tile[rowF][colF].GetId());
 								tile[rowF][colF].Select();
+								
+								// enable the player to start once 15 tiles are drawed
 								if(drawedCount == 15){
 									add(gameBegin, 3, 0);	
-									Control_Framework.boydialog.setText("«östart¶}©l¹CÀ¸§a~");
+									Control_Framework.boydialog.setText("快開始吧");
 									Control_Framework.boydialog.setVisible(true);
 									Control_Framework.girldialog.setVisible(false);
 								}
 							}
-						}else{
+						}
+						else{
 							if(listCardSection){
 								
 								if(canlist < 3){
 									if(!tile[rowF][colF].Selected()){
-										
 										//tile[rowF][colF].setVisible(false);
 										tile[rowF][colF].SetLoc(((canlist)*50)+200, 580);
 										tile[rowF][colF].setLocation(tile[rowF][colF].GetCol(), tile[rowF][colF].GetRow());
 										canlist++;
-										tile[rowF][colF].ToString(); // pls modify this method to show the tiles'id and wt value does this id represent!! (for example: 1 = Ò»Èf£¬2=ƒÉÈf, etc)
+										tile[rowF][colF].ToString();
 										System.out.println(tile[rowF][colF].GetId());
 										tile[rowF][colF].Select();
-										if(canlist==3)gameBegin.setVisible(true);
-									
+										if(canlist == 3) gameBegin.setVisible(true);
+									}
 								}
 							}
-						}
 						}
 					}
 				});
