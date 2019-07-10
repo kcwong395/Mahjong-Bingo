@@ -23,9 +23,11 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 	public static boolean ClickMJ = false;
 	static int select_value;
 	static MJ_Card selectMJ;
-	private static boolean quit = false;
 	public static boolean hasbeenListen = false;
 	static int[][] checkmap = new int[6][6];
+	private static boolean quit = false;
+	private static int cnt = 0;
+	private static boolean finish = false;
 	
 	public gaming_page() {
 		setVisible(false);
@@ -150,7 +152,8 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			System.out.println("");
 		}
 		SumColRow();
-		SumSlash();
+		if(!finish) SumSlash();
+		finish = false;
 	}
 	
 	// check the tiles in same column and row
@@ -164,10 +167,11 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			}
 			System.out.printf("Row %d:\t%d\tCol %d:\t%d\n",i,col,i,row);
 			CheckResult(col,row);
-			if(quit) break;
 			col = 0;
 			row = 0;
+			if(quit) break;
 		}
+		quit = false;
 	}
 	
 	// check slash
@@ -193,11 +197,12 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 						}
 						System.out.printf("row = %d , col = %d ,Right to Left Slash = %d\n",i,k,sumrighttoleft);
 					}
-					if(quit) break;
 					CheckResult(sumlefttoright,sumrighttoleft);
+					if(quit) break;
 				}
 			}	
 		}	
+		quit = false;
 	}
 	
 	// this check if the player can get extra cards or wins after each tiles placement
@@ -213,6 +218,7 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			drawing_page.ClickBoyCount = 0;
 			hasbeenListen = false;
 			Cur_MJ = new ArrayList<MJ_Card>(); // clear existing mj on the game table
+			finish = true;
 			quit = true;
 		}
 		else if((resultA == 5 || resultB == 5) && !hasbeenListen) {
@@ -231,17 +237,21 @@ public class gaming_page extends JPanel implements MouseMotionListener{
 			}
 		}
 		else if(Cur_MJ.size() == 0) {
-			Control_Framework.boydialog.setText("人類總是要犯同一個錯誤");
-			Control_Framework.girldialog.setText("還有下一次的");
-			Control_Framework.boydialog.setVisible(true);
-			Control_Framework.girldialog.setVisible(true);
-			JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗乃兵家常事,大俠請重新投幣", "Gameover",JOptionPane.INFORMATION_MESSAGE);
-			Control_Framework.main_frame.RenewPanel();
-			Control_Framework.main_frame.switchPage(1);
-			drawing_page.ClickBoyCount = 0;
-			hasbeenListen = false;
-			Cur_MJ = new ArrayList<MJ_Card>();
-			quit = true;
+			cnt++;
+			if(cnt == 22) {
+				Control_Framework.boydialog.setText("人類總是要犯同一個錯誤");
+				Control_Framework.girldialog.setText("還有下一次的");
+				Control_Framework.boydialog.setVisible(true);
+				Control_Framework.girldialog.setVisible(true);
+				JOptionPane.showMessageDialog(Control_Framework.start_Page, "勝敗乃兵家常事,大俠請重新投幣", "Gameover",JOptionPane.INFORMATION_MESSAGE);
+				Control_Framework.main_frame.RenewPanel();
+				Control_Framework.main_frame.switchPage(1);
+				drawing_page.ClickBoyCount = 0;
+				hasbeenListen = false;
+				Cur_MJ = new ArrayList<MJ_Card>();
+				finish = true;
+				quit = true;
+			}
 		}
 	}
 	

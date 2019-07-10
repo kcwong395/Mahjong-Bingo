@@ -27,6 +27,7 @@ public class Stitch extends JLabel implements MouseMotionListener{
 			// outlook for angel
 			outlook= new ImageIcon(this.getClass().getResource("/Angel_transparent_try.png")).getImage();
 		}
+		
 		this.setIcon(new ImageIcon(outlook));
 		this.setSize(300,300);
 		this.addMouseListener(new MouseListener(){

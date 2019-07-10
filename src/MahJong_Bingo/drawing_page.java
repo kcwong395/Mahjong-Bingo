@@ -168,7 +168,7 @@ public class drawing_page extends JLayeredPane {
 							}
 							if(canlist == 3) {
 								gameBegin.setVisible(true);
-								gaming_page.hasbeenListen = true;	
+								gaming_page.hasbeenListen = true;
 							}
 						}
 					}

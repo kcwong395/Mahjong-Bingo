@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bd33ff0-2822-46ae-8a2e-e9a4fedc76f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/Control_Framework.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/Control_Framework.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/Out_chess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/drawing_page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/gaming_page.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/gaming_page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/MahJong_Bingo/start_page.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/Control_Framework.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/Control_Framework.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/MJ_Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/MJ_Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/Out_chess.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/drawing_page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/drawing_page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/gaming_page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/gaming_page.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/start_page.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/start_page.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MahJong_Bingo/Stitch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MahJong_Bingo/Stitch.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,12 +12,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MahJong_Bingo/Control_Framework.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="228" />
-    <option name="y" value="6" />
+    <option name="x" value="270" />
+    <option name="y" value="143" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -40,9 +39,30 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Mahjong-Bingo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mahjong-Bingo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mahjong-Bingo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mahjong-Bingo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Mahjong-Bingo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Mahjong-Bingo" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="MahJong_Bingo" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -78,16 +98,18 @@
       <workItem from="1553855585277" duration="769000" />
       <workItem from="1556961453704" duration="4000" />
       <workItem from="1558881906718" duration="22000" />
+      <workItem from="1561558032630" duration="45000" />
+      <workItem from="1561599092679" duration="13000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="795000" />
+    <option name="totallyTimeSpent" value="853000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="228" y="6" width="1400" height="1000" extended-state="0" />
+    <frame x="270" y="143" width="1400" height="1000" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25746268" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26492536" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -120,5 +142,14 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/MahJong_Bingo/Control_Framework.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="10" column="26" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
