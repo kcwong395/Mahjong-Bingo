@@ -2,9 +2,8 @@
 
 This project is co-developed by Ken, Kevin and Martin. To start the game, you can simply open the Mahjong-Bingo.jar. Then, you should be able to see the following page:
 
-<img src="cover.png"
-     alt="cover icon"
-     style="display: block; margin-left: auto; margin-right: auto; width: 50%;" />
+<img src="img_for_readme/cover.PNG"
+     alt="cover icon" />
 
 Table of Content:
 - Motivation - Why Mahjong-Bingo
