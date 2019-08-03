@@ -1,6 +1,8 @@
 ## Mahjong-Bingo: A Bingo game in Taiwan Night Market
 
-This project is co-developed by Ken, Kevin and Martin. To start the game, you can simply open the Mahjong-Bingo.jar. Then, you should be able to see the following page:
+This project is co-developed by Ken, Kevin and Martin. 
+
+To start the game, you can simply open the Mahjong-Bingo.jar. Then, you should be able to see the following page:
 
 <img src="img_for_readme/cover.PNG"
      alt="cover icon" />
@@ -8,6 +10,7 @@ This project is co-developed by Ken, Kevin and Martin. To start the game, you ca
 Table of Content:
 - Motivation - Why Mahjong-Bingo
 - Introduction - How to play
+- Future Improvement
 - Acknowledgements
 
 ### Motivation - Why Mahjong-Bingo
@@ -24,6 +27,11 @@ This is the game flow:
 3. Drag the tiles to the correspondent place which shares the same picture
 4. If any six of the tiles complete a line (no matter it is **horizontal, vertical and diagonal**), you win
 5. If there are five tiles connected while no line is completed, get extra 3 tiles and continue the game
+
+### Future Improvement
+
+1. We are looking for some no copyright music and sound effect which fit the style of the game
+2. ~We keen to find some picutre of hot ladies to replace the two stitches~
 
 ### Acknowledgements
 
