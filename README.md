@@ -51,6 +51,7 @@ Winning Conditions:
 ## Maintainers
 
 [@ElderHorse](https://github.com/kcwong395)
+
 [@KevinKKM](https://github.com/KevinKKM)
 
 ## Contributing
@@ -65,4 +66,5 @@ For other pictures, our team does not own any rights. We obtained those photos f
 
 
 ## License
+
 MIT © 2019 ElderHorse
