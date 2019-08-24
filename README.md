@@ -54,6 +54,8 @@ Winning Conditions:
 
 [@KevinKKM](https://github.com/KevinKKM)
 
+Ken Tang
+
 ## Contributing
 
 Feel free to open an issue if you hope to propose anything
