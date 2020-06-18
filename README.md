@@ -16,7 +16,7 @@ A mahjong style bingo game
 
 ## Motivation
 
-We were exchanging students visiting National Cheng Kung University (or simply NCKU) during Summer Semester in 2018. Our team was attending a JAVA programming course and was required to complete a project using JAVA programming.
+We were exchange students visiting National Cheng Kung University (or simply NCKU) during Summer Semester in 2018. Our team was attending a JAVA programming course and was required to complete a project using JAVA programming.
 
 In a visit to Tainan night market, we observed citizens playing this game. We had a deep impression towards this interesting game since we saw no one won any prizes and thus aroused our interest to study this game.
 
